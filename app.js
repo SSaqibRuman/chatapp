@@ -7,12 +7,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-
-
 io.on('connection', (socket) => {
-    socket.on("send_message", (data) => {
-        io.broadcast.emit("receive_message", data)
-    })
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
 });
 
 
