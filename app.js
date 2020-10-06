@@ -1,10 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var app = require('express')();
-var http = require('http').createServer({
-    key: fs.readFileSync(path.resolve('./ssl/privatekey.pem')),
-    cert: fs.readFileSync(path.resolve('./ssl/publickey.cer'))
-}, app);
+var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3001;
 
